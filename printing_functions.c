@@ -18,20 +18,20 @@ int print_char(va_list args)
 int print_string(va_list args)
 {
 	char *str = va_arg(args, char *);
-	int i = 0;
+	int count = 0;
 	
-	while (str[i] != '\0')
-		_putchar(str[i++]);
+	while (*str != '\0')
+		count += _putchar(*str++);
+	return (count);
 }
 /**
- * print_number - prints a number character character
- * @args: number
+ * _print_number - prints a number character character
+ * @num: number
  * @count: to count the character
  * Return: the count of characters
  */
-int print_number(va_list args, int count)
+int _print_number(int num, int count)
 {
-	int num = va_arg(args, int);
 	unsigned int unum = num;
 
 	if (num < 0)
@@ -40,7 +40,18 @@ int print_number(va_list args, int count)
 		unum = -num;
 	}
 	if (unum > 9)
-		count += print_number(unum / 10);
+		count += _print_number(unum / 10, count);
 	count += _putchar('0' + unum % 10);
 	return (count);
+}
+/**
+ * print_number - prints a number character character
+ * @args: number
+ * Return: the count of characters
+ */
+int print_number(va_list args)
+{
+	int num = va_arg(args, int);
+
+	return _print_number(num, 0);
 }
