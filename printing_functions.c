@@ -3,7 +3,7 @@
 /**
  * print_char - print a character
  * @args: char
- * Return: an integer
+ * Return: ascii code of char
  */
 int print_char(va_list args)
 {
@@ -13,7 +13,7 @@ int print_char(va_list args)
 /**
  * print_string - prints a string
  * @args: string
- * Return: the number of character
+ * Return: the sum of character
  */
 int print_string(va_list args)
 {
@@ -27,10 +27,10 @@ int print_string(va_list args)
 	return (count);
 }
 /**
- * _print_number - prints a number character character
+ * _print_number - prints a number
  * @num: number
- * @count: to count the character
- * Return: the count of characters
+ * @count: to sum the character
+ * Return: the sum of characters
  */
 int _print_number(int num, int count)
 {
@@ -48,13 +48,37 @@ int _print_number(int num, int count)
 	return (count + neg_count);
 }
 /**
- * print_number - prints a number character character
+ * print_number - prints a number
  * @args: number
- * Return: the count of characters
+ * Return: the sum of characters
  */
 int print_number(va_list args)
 {
 	int num = va_arg(args, int);
 
 	return (_print_number(num, 0));
+}
+/**
+ * print_int_b - prints a number as binary
+ * @args: number
+ * Return: the sum of characters
+ */
+int print_int_b(va_list args)
+{
+	int num = va_arg(args, int);
+	int i = 31, count = 0;
+	int flag_0 = 0;
+
+	while (i >= 0)
+	{
+		int bin_num = (num >> i) & 1;
+
+		i--;
+		if (!flag_0 && bin_num == 0)
+			continue;
+		else
+			flag_0 = 1;
+		count += _putchar('0' + bin_num);
+	}
+	return (count);
 }

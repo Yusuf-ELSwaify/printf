@@ -19,5 +19,5 @@ int print_string(va_list);
 int print_number(va_list args);
 int type_option(char ch, va_list);
 int _printf(const char *format, ...);
-
+int print_int_b(va_list);
 #endif

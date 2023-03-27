@@ -14,6 +14,7 @@ int type_option(char ch, va_list args)
 		{"s", print_string},
 		{"d", print_number},
 		{"i", print_number},
+		{"b", print_int_b},
 		{0, 0}
 	};
 
