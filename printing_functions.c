@@ -80,5 +80,7 @@ int print_int_b(va_list args)
 			flag_0 = 1;
 		count += _putchar('0' + bin_num);
 	}
+	if (!flag_0)
+		count += _putchar('0');
 	return (count);
 }
